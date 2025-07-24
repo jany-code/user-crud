@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.html' %}
+
+{% block content %}
+    <h2>Detalles de la tarea</h2>
+    <div>
+        <h3>Tarea: {{task.titulo}}</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">
+                Actualizar
+            </button>
+        </form>
+        <div>
+            <form action="{% url 'task_completed' task.id %}" method="POST">
+                {% csrf_token %}
+                <button>
+                    Completado
+                </button>
+            </form>
+            <form action="{% url 'task_delete' task.id %}" method="POST">
+                {% csrf_token %}
+                <button>
+                    Eliminar
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

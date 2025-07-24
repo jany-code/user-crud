@@ -1,0 +1,25 @@
+{% extends 'layouts/layout.html' %}
+
+{% block content %}
+    <h2>Tasks</h2>
+    
+    {% for task in tasks %}
+        <div>
+            <a href="{% url 'task_detail' task.id %}">
+                <h3>Tarea: {{task.titulo}}</h3>
+            </a>
+            <p>Descriptcion: {{task.descripcion}}</p>
+            {% if task.important %}
+                <p>Importante: Si</p>
+            {% else %}
+                <p>Importante: No</p>
+            {% endif %}
+                <p>Fecha creacion: {{ task.fecha_creacion }}</p>
+            {% if task.fecha_termino %}
+                <p>Fecha termino: {{ task.fecha_termino }}</p>
+            {% else %}
+                <p>Fecha termino: Pendiente</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

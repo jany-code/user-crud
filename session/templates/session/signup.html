@@ -1,0 +1,15 @@
+{% extends 'layouts/layout.html' %}
+
+{% block content %}
+    <h2>SignUp</h2>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">
+            Signup
+        </button>
+    </form>
+{% endblock %}
