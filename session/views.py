@@ -11,7 +11,10 @@ from django.utils import timezone
 
 
 def index(request):
-    return render(request, "session/index.html")
+    user = request.user
+    return render(request, "session/index.html", {
+        'user': user
+    })
 
 
 def signup(request):

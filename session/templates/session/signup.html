@@ -1,15 +1,33 @@
 {% extends 'layouts/layout.html' %}
-
+{% load form_tags %}
 {% block content %}
-    <h2>SignUp</h2>
-    {% if error %}
-        <p>{{ error }}</p>
-    {% endif %}
-    <form action="{% url 'signup' %}" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">
-            Signup
-        </button>
-    </form>
+    <div class="mx-auto mt-3"  style="width: 400px;">
+        <h2 class="text-center mb-3">Registro</h2>
+        {% if error %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{ error }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="id_username" class="form-label">Usuario:</label>
+                {{form.username|add_class:"form-control"}}
+            </div>
+
+            <div>
+                <label for="id_password1" class="form-label">Contraseña:</label>
+                {{form.password1|add_class:"form-control"}}
+            </div>
+
+            <div>
+                <label for="id_password2" class="form-label">Confirmar contraseña:</label>
+                {{form.password2|add_class:"form-control"}}
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark mt-3">Enviar</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}
