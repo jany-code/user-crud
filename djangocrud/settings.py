@@ -26,11 +26,14 @@ RENDER = os.environ.get('RENDER')
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', default=os.environ.get('SECRET_KEY'))
+#SECRET_KEY = os.getenv('SECRET_KEY', default=os.environ.get('SECRET_KEY'))
+
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', str(RENDER is None)).lower() == 'true'
+#DEBUG = os.getenv('DEBUG', str(RENDER is None)).lower() == 'true'
+DEBUG = 'RENDER' not in os.environ
 
 
 ALLOWED_HOSTS = []
