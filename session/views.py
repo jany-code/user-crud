@@ -139,5 +139,3 @@ def tasks_completed_list(request):
         'tasks': tasks
     })
 
-def healthcheck(request):
-    return HttpResponse("Todo funciona 👌")
