@@ -7,6 +7,7 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import TaskForm
 from .models import Task
 from django.utils import timezone
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -137,3 +138,6 @@ def tasks_completed_list(request):
     return render(request, 'task/task.html', {
         'tasks': tasks
     })
+
+def healthcheck(request):
+    return HttpResponse("Todo funciona 👌")
